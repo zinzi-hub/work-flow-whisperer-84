@@ -1,26 +1,31 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { ChatAssistant } from "@/components/ChatAssistant";
+import { Toaster } from "@/components/ui/sonner";
 
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { title: "Sidekick — AI Workplace Productivity Assistant" },
+      {
+        name: "description",
+        content:
+          "Draft emails, summarize meetings, plan your day, and research topics — all in one AI assistant built for professionals.",
+      },
+      { property: "og:title", content: "Sidekick — AI Workplace Productivity Assistant" },
+      {
+        property: "og:description",
+        content: "Automate email writing, meeting notes, task planning, and research.",
+      },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
-
 function Index() {
-  return <PlaceholderIndex />;
+  return (
+    <>
+      <ChatAssistant />
+      <Toaster richColors position="top-center" />
+    </>
+  );
 }
